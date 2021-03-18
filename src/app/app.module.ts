@@ -10,6 +10,9 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { FeaturesComponent } from './home/features/features.component';
 import { CardFeatureComponent } from './home/features/card-feature/card-feature.component';
 import { AboutUsComponent } from './home/about-us/about-us.component';
+import { FeedbackComponent } from './home/feedback/feedback.component';
+import { FeedbackProfileComponent } from './home/feedback/feedback-profile/feedback-profile.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { AboutUsComponent } from './home/about-us/about-us.component';
     WelcomeComponent,
     FeaturesComponent,
     CardFeatureComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    FeedbackComponent,
+    FeedbackProfileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

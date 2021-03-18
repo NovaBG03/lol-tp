@@ -1,0 +1,13 @@
+<div class="item service-item">
+  <div class="author">
+    <i><img [src]="data.imageUrl" alt="Author One"></i>
+  </div>
+  <div class="testimonial-content">
+    <ul class="stars">
+      <li *ngFor="let star of starArray"><i class="fa fa-star"></i></li>
+    </ul>
+    <h4>{{data.name}}</h4>
+    <p>“{{data.content}}”</p>
+    <span>{{data.title}}</span>
+  </div>
+</div>
