@@ -7,6 +7,9 @@ import {AppRoutingModule} from './app-routing.module';
 import { PreloaderComponent } from './preloader/preloader.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
+import { FeaturesComponent } from './home/features/features.component';
+import { CardFeatureComponent } from './home/features/card-feature/card-feature.component';
+import { AboutUsComponent } from './home/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
     HomeComponent,
     PreloaderComponent,
     NavbarComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FeaturesComponent,
+    CardFeatureComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
