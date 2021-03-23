@@ -1,4 +1,6 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
+import {ViewportScroller} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +11,11 @@ export class HomeComponent implements OnInit {
 
   isTop = true;
 
-  @HostListener('window:scroll') onScroll(): void {
-    this.isTop = window.scrollY < 10;
+  constructor() {
   }
 
-  constructor() {
+  @HostListener('window:scroll') onScroll(): void {
+    this.isTop = window.scrollY < 10;
   }
 
   ngOnInit(): void {

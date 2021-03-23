@@ -15,6 +15,10 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .clearfix:after {
   content: ".";
   display: block;
@@ -27,7 +31,6 @@ figure, header, nav, section, article, aside, footer, figcaption {
 .clearfix {
   display: inline-block;
 }
-
 html[xmlns] .clearfix {
   display: block;
 }

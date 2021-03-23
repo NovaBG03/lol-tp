@@ -352,6 +352,7 @@ a {
     -o-transition: all 0s ease 0s;
     transition: all 0s ease 0s;
     margin-left: 0px;
+    background: whitesmoke;
   }
   .header-area .main-nav .nav li:first-child {
     border-top: 1px solid #eee;
@@ -412,4 +413,6 @@ a {
   .header-area .main-nav .nav {
     display: flex !important;
   }
+
+
 }

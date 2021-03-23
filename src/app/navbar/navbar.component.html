@@ -3,33 +3,33 @@
     <div class="row">
       <div class="col-12">
         <nav class="main-nav">
-          <a href="index.html" class="logo">LoL TP</a>
+          <a routerLink="/" class="logo">LoL TP</a>
 
-          <ul class="nav">
-            <li class="scroll-to-section">
-              <a href="#welcome" class="menu-item bulgarian">Начало</a>
+          <ul class="nav" [ngStyle]="{ display: isOpen ? 'block' : 'none'}">
+            <li>
+              <a routerLink="home" fragment="welcome" class="menu-item bulgarian">Начало</a>
             </li>
-            <li class="scroll-to-section">
-              <a href="#testimonials" class="menu-item bulgarian">Запиши се</a>
+            <li>
+              <a routerLink="home" fragment="features" class="menu-item bulgarian">Запиши се</a>
             </li>
-            <li class="scroll-to-section">
-              <a href="#about" class="menu-item bulgarian">За нас</a>
+            <li>
+              <a routerLink="home" fragment="about-us" class="menu-item bulgarian">За нас</a>
             </li>
             <li class="submenu">
               <a class="bulgarian">Медии</a>
               <ul>
-                <li><a href="" class="menu-item">Facebook</a></li>
-                <li><a href="" class="menu-item">Instagram</a></li>
-                <li><a href="" class="menu-item">Twitch</a></li>
+                <li><a href="" target="_blank" class="menu-item">Facebook</a></li>
+                <li><a href="https://www.instagram.com/loltournamentplovdiv/" target="_blank" class="menu-item">Instagram</a></li>
+                <li><a href="" target="_blank" class="menu-item">Twitch</a></li>
               </ul>
             </li>
-            <li class="scroll-to-section">
-              <a href="#contact-us" class="menu-item bulgarian">Задай въпрос</a>
+            <li>
+              <a routerLink="home" fragment="contact-us" class="menu-item bulgarian">Задай въпрос</a>
             </li>
           </ul>
 
-          <a class='menu-trigger'>
-            <span>Menu</span>
+          <a class='menu-trigger' [ngClass]="{ active: isOpen}">
+            <span (click)="toggleMenu()">Menu</span>
           </a>
 
         </nav>
