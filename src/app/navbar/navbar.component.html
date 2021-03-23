@@ -5,31 +5,31 @@
         <nav class="main-nav">
           <a routerLink="/" class="logo">LoL TP</a>
 
-          <ul class="nav" [ngStyle]="{ display: isOpen ? 'block' : 'none'}">
+          <ul class="nav" [ngStyle]="{ display: isMenuOpen ? 'block' : 'none'}">
             <li>
-              <a routerLink="home" fragment="welcome" class="menu-item bulgarian">Начало</a>
+              <a routerLink="home" fragment="welcome" (click)="closeMenu()" class="menu-item bulgarian">Начало</a>
             </li>
             <li>
-              <a routerLink="home" fragment="features" class="menu-item bulgarian">Запиши се</a>
+              <a routerLink="home" fragment="features" (click)="closeMenu()" class="menu-item bulgarian">Запиши се</a>
             </li>
             <li>
-              <a routerLink="home" fragment="about-us" class="menu-item bulgarian">За нас</a>
+              <a routerLink="home" fragment="about-us" (click)="closeMenu()" class="menu-item bulgarian">За нас</a>
             </li>
             <li class="submenu">
-              <a class="bulgarian">Медии</a>
-              <ul>
-                <li><a href="" target="_blank" class="menu-item">Facebook</a></li>
-                <li><a href="https://www.instagram.com/loltournamentplovdiv/" target="_blank" class="menu-item">Instagram</a></li>
-                <li><a href="" target="_blank" class="menu-item">Twitch</a></li>
+              <a class="bulgarian" (click)="toggleSocial()">Медии</a>
+              <ul [ngClass]="{active: isSocialOpen}">
+                <li><a href="" target="_blank" (click)="closeMenu()" class="menu-item">Facebook</a></li>
+                <li><a href="https://www.instagram.com/loltournamentplovdiv/" target="_blank" (click)="closeMenu()" class="menu-item">Instagram</a></li>
+                <li><a href="" target="_blank" (click)="closeMenu()" class="menu-item">Twitch</a></li>
               </ul>
             </li>
             <li>
-              <a routerLink="home" fragment="contact-us" class="menu-item bulgarian">Задай въпрос</a>
+              <a routerLink="home" fragment="contact-us" (click)="closeMenu()" class="menu-item bulgarian">Задай въпрос</a>
             </li>
           </ul>
 
-          <a class='menu-trigger' [ngClass]="{ active: isOpen}">
-            <span (click)="toggleMenu()">Menu</span>
+          <a (click)="toggleMenu()" class='menu-trigger' [ngClass]="{ active: isMenuOpen}">
+            <span>Menu</span>
           </a>
 
         </nav>

@@ -8,7 +8,8 @@ import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core'
 export class NavbarComponent implements OnInit {
 
   @Input() isTop = true;
-  isOpen = false;
+  isMenuOpen = false;
+  isSocialOpen = false;
 
   constructor(private elementRef: ElementRef) {
   }
@@ -19,11 +20,21 @@ export class NavbarComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   clickedOutside(event): void {
     if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.isOpen = false;
+      this.closeMenu();
     }
   }
 
   toggleMenu(): void {
-    this.isOpen = !this.isOpen;
+    this.isMenuOpen = !this.isMenuOpen;
+    console.log(this.isMenuOpen);
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+    this.isSocialOpen = false;
+  }
+
+  toggleSocial(): void {
+    this.isSocialOpen = !this.isSocialOpen;
   }
 }
