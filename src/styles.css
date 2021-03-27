@@ -183,6 +183,10 @@ button.main-button:hover {
   background-color: #f1556a;
 }
 
+button.main-button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+}
 
 .center-heading {
   margin-bottom: 70px;

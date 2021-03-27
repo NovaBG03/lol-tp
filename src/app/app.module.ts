@@ -1,18 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
 import {AppRoutingModule} from './app-routing.module';
-import { PreloaderComponent } from './preloader/preloader.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { WelcomeComponent } from './home/welcome/welcome.component';
-import { FeaturesComponent } from './home/features/features.component';
-import { CardFeatureComponent } from './home/features/card-feature/card-feature.component';
-import { AboutUsComponent } from './home/about-us/about-us.component';
-import { FeedbackComponent } from './home/feedback/feedback.component';
-import { FeedbackProfileComponent } from './home/feedback/feedback-profile/feedback-profile.component';
-import { FooterComponent } from './footer/footer.component';
+import {PreloaderComponent} from './preloader/preloader.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {WelcomeComponent} from './home/welcome/welcome.component';
+import {FeaturesComponent} from './home/features/features.component';
+import {CardFeatureComponent} from './home/features/card-feature/card-feature.component';
+import {AboutUsComponent} from './home/about-us/about-us.component';
+import {FeedbackComponent} from './home/feedback/feedback.component';
+import {FeedbackProfileComponent} from './home/feedback/feedback-profile/feedback-profile.component';
+import {FooterComponent} from './footer/footer.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,12 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

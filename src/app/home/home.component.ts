@@ -1,6 +1,4 @@
-import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
-import {ViewportScroller} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 export class HomeComponent implements OnInit {
 
   isTop = true;
+  isLoading = false;
 
   constructor() {
   }
