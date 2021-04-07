@@ -4,6 +4,6 @@
     <img [src]="data.imageUrl">
     <h4 class="bulgarian">{{data.cardTitle}}</h4>
     <p>{{data.content}}</p>
-    <a href="#" class="main-button">{{data.buttonTitle}}</a>
+    <a [routerLink]="data.routerLink" [fragment]="data.fragment" class="main-button">{{data.buttonTitle}}</a>
   </div>
 </div>

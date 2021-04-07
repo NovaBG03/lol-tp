@@ -15,6 +15,8 @@ import {FeedbackProfileComponent} from './home/feedback/feedback-profile/feedbac
 import {FooterComponent} from './footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { RegisterTeamComponent } from './register-team/register-team.component';
+import { FooterSmallComponent } from './footer-small/footer-small.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {HttpClientModule} from '@angular/common/http';
     AboutUsComponent,
     FeedbackComponent,
     FeedbackProfileComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterTeamComponent,
+    FooterSmallComponent
   ],
   imports: [
     BrowserModule,
