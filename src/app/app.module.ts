@@ -20,6 +20,7 @@ import {FooterSmallComponent} from './footer-small/footer-small.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { PopUpComponent } from './register-team/pop-up/pop-up.component';
 import { ErrorPopUpComponent } from './register-team/error-pop-up/error-pop-up.component';
+import { EmptyComponent } from './shared/empty/empty.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ErrorPopUpComponent } from './register-team/error-pop-up/error-pop-up.c
     FooterSmallComponent,
     SpinnerComponent,
     PopUpComponent,
-    ErrorPopUpComponent
+    ErrorPopUpComponent,
+    EmptyComponent
   ],
   imports: [
     BrowserModule,
