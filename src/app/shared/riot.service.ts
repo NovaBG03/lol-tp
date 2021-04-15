@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable, throwError} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {SummonerDto} from './dtos';
+import {HttpClient} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -11,20 +10,17 @@ export class RiotService {
   constructor(private http: HttpClient) {
   }
 
-  findSummoner(username: string): Observable<SummonerDto> {
-    const path = '/summoner/' + username;
-
-    return this.http.get<SummonerDto>(environment.lolTpApiUrl + path);
-      // .pipe(
-      //   catchError(this.handleError)
-      // );
-  }
-
-  private handleError(error): Observable<any> {
-    if (error.error instanceof ErrorEvent) {
-      return throwError('Network or client-side error!');
-    }
-
-    return throwError(`${error.status} ${error.statusText}.\n${error.message}`);
+  registerTeam(teamInfo): Observable<any> {
+    const url = environment.lolTpApiUrl + '/register/team';
+    console.log(teamInfo);
+    return this.http.post(url, teamInfo)
+      .pipe(
+        catchError(err => {
+          if (err.status === 200) {
+            return of(err.message);
+          }
+          return throwError(err);
+        })
+      );
   }
 }

@@ -15,8 +15,12 @@ import {FeedbackProfileComponent} from './home/feedback/feedback-profile/feedbac
 import {FooterComponent} from './footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { RegisterTeamComponent } from './register-team/register-team.component';
-import { FooterSmallComponent } from './footer-small/footer-small.component';
+import {RegisterTeamComponent} from './register-team/register-team.component';
+import {FooterSmallComponent} from './footer-small/footer-small.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { PopUpComponent } from './register-team/pop-up/pop-up.component';
+import { ErrorPopUpComponent } from './register-team/error-pop-up/error-pop-up.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { FooterSmallComponent } from './footer-small/footer-small.component';
     FeedbackProfileComponent,
     FooterComponent,
     RegisterTeamComponent,
-    FooterSmallComponent
+    FooterSmallComponent,
+    SpinnerComponent,
+    PopUpComponent,
+    ErrorPopUpComponent
   ],
   imports: [
     BrowserModule,

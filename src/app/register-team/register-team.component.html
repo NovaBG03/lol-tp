@@ -1,19 +1,5 @@
-<div class="register-team" id="register">
-
+<div class="register-team" id="register" [ngStyle]="{overflow: isRegistered ? 'hidden' : 'auto'}">
   <div class="container">
-
-    <!--  <div class="row">
-        <form (ngSubmit)="SubmitForm()" [formGroup]="teamForm">
-          <input type="text" formControlName="name">
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-      <div class="row">
-        <img [src]="summoner?.profileIconUrl" class="img-fluid"
-             style="width: 2rem; padding-right: 5px">
-        <p>{{ summoner?.name }}</p>
-      </div>-->
-
     <div class="row ml-1 mr-1">
       <div class="heading col-lg-10 col-md-12 col-sm-12 offset-lg-1">
         <h2>Регистрирай се в турнира на <em>LoL TP</em></h2>
@@ -25,45 +11,153 @@
         <app-preloader *ngIf="false"></app-preloader>
 
         <div class="contact-form">
-          <form (ngSubmit)="SubmitForm()" [formGroup]="teamForm">
+          <form (ngSubmit)="submitForm()" [formGroup]="teamForm">
 
             <div class="row">
               <div class="col-md-3 col-sm-12">
                 <fieldset>
                   <input type="text" id="teamTag" placeholder="Tag на отбора" formControlName="teamTag">
                 </fieldset>
+                <div *ngIf="teamTag.invalid && (teamTag.dirty || teamTag.touched)" class="text-danger small mt-0">
+                  <div *ngIf="teamTag.errors.required">
+                    Тага на отбора е задължитен.
+                  </div>
+                  <div *ngIf="teamTag.errors.minlength">
+                    Тага на отбора е прекалено кратък.
+                  </div>
+                  <div *ngIf="teamTag.errors.maxlength">
+                    Тага на отбора е прекалено дълъг.
+                  </div>
+                </div>
               </div>
               <div class="col-md-9 col-sm-12">
                 <fieldset>
                   <input type="text" id="teamName" placeholder="Име на отбора" formControlName="teamName">
                 </fieldset>
+                <div *ngIf="teamName.invalid && (teamName.dirty || teamName.touched)" class="text-danger small mt-0">
+                  <div *ngIf="teamName.errors.required">
+                    Името на отбора е задължително.
+                  </div>
+                  <div *ngIf="teamName.errors.minlength">
+                    Името на отбора е прекалено кратко.
+                  </div>
+                  <div *ngIf="teamName.errors.maxlength">
+                    Името на отбора е прекалено дълъго.
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="row" *ngFor="let a of [1,2,3,4,5]">
-              <div class="col-md-6 col-sm-12">
+            <div class="row">
+              <div class="col-md-8 col-sm-12">
                 <fieldset>
-                  <input type="text" id="name" placeholder="Собствено и фамилно име" formControlName="name">
+                  <input type="text" id="email" placeholder="Имейл за връзка" formControlName="contactEmail">
                 </fieldset>
+                <div *ngIf="contactEmail.invalid && (contactEmail.dirty || contactEmail.touched)"
+                     class="text-danger small mt-0">
+                  <div *ngIf="contactEmail.errors.required">
+                    Емейлът е задължителен.
+                  </div>
+                  <div *ngIf="contactEmail.errors.pattern">
+                    Невалиден емейл.
+                  </div>
+                  <div *ngIf="contactEmail.errors.maxlength">
+                    Емейлът е прекалено дълъг.
+                  </div>
+                </div>
               </div>
+              <div class="col-md-4 col-sm-12">
+                <fieldset>
+                  <input type="text" id="phone" placeholder="Телефон за връзка" formControlName="contactPhone">
+                </fieldset>
+                <div *ngIf="contactPhone.invalid && (contactPhone.dirty || contactPhone.touched)"
+                     class="text-danger small mt-0">
+                  <div *ngIf="contactPhone.errors.required">
+                    Телефонът за връзка е задължителен.
+                  </div>
+                  <div *ngIf="contactPhone.errors.pattern">
+                    Телефонът за връзка е невалиден. (Започнете с 08)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngFor="let i of [1,2,3,4,5]">
               <div class="col-md-6 col-sm-12">
                 <fieldset>
-                  <input type="text" id="email" placeholder="Име в играта" formControlName="email">
+                  <input type="text"
+                         [id]="'playerName' + i"
+                         [placeholder]="'Собствено и фамилно име на играч ' + i"
+                         [formControlName]="'playerName' + i">
                 </fieldset>
+                <div *ngIf="getPlayerName(i).invalid && (getPlayerName(i).dirty || getPlayerName(i).touched)"
+                     class="text-danger small mt-0">
+                  <div *ngIf="getPlayerName(i).errors.required">
+                    Името на играча е задължително.
+                  </div>
+                  <div *ngIf="getPlayerName(i).errors.minlength">
+                    Името на играча е прекалено кратко.
+                  </div>
+                  <div *ngIf="getPlayerName(i).errors.maxlength">
+                    Името на играча е прекалено дълъго.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 col-10">
+                <fieldset>
+                  <input type="text"
+                         [id]="'summonerName' + i"
+                         [placeholder]="'Име в играта на играч ' + i"
+                         [formControlName]="'summonerName' + i">
+                </fieldset>
+                <div *ngIf="getSummonerName(i).invalid && (getSummonerName(i).dirty || getSummonerName(i).touched)"
+                     class="text-danger small mt-0">
+                  <div *ngIf="getSummonerName(i).errors.required">
+                    Името в игра е задължително.
+                  </div>
+                  <div *ngIf="getSummonerName(i).errors.minlength">
+                    Името в игра е прекалено кратко.
+                  </div>
+                  <div *ngIf="getSummonerName(i).errors.maxlength">
+                    Името в игра е прекалено дълъго.
+                  </div>
+                  <div *ngIf="getSummonerName(i).errors.invalidSummonerName">
+                    Името в игра е невалидно.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-1 col-2 pl-0">
+                <div class="check" *ngIf="getSummonerName(i).pending">⌛</div>
+                <div class="check" *ngIf="getSummonerName(i).invalid">❌</div>
+                <img class="check" *ngIf="getSummonerName(i).valid" [src]="getSummonerPicture(i)">
               </div>
             </div>
 
             <div class="row">
               <div class="col-lg-12">
                 <fieldset>
-                  <span class="textarea-helper">11</span>
-                  <textarea rows="6" id="message" placeholder="Твоето съобщение" formControlName="message"></textarea>
+                  <span class="textarea-helper">{{ leftMessageCharacters }}</span>
+                  <textarea rows="6"
+                            id="message"
+                            placeholder="Допълнително съобщение"
+                            formControlName="message"></textarea>
                 </fieldset>
+                <div *ngIf="message.invalid && (message.dirty || message.touched)" class="text-danger small mt-0">
+                  <div *ngIf="message.errors.minlength">
+                    Съобщението е прекалено кратко.
+                  </div>
+                  <div *ngIf="message.errors.maxlength">
+                    Съобщението е прекалено дълго.
+                  </div>
+                </div>
               </div>
               <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" class="main-button mt-4" [disabled]="teamForm.invalid">Изпрати</button>
+                <fieldset *ngIf="!isLoading">
+                  <button type="submit" class="main-button mt-4" [disabled]="teamForm.invalid">Регистрирай се</button>
                 </fieldset>
+                <div *ngIf="isLoading">
+                  <app-spinner></app-spinner>
+                </div>
               </div>
             </div>
           </form>
@@ -76,3 +170,5 @@
 </div>
 
 <app-footer-small></app-footer-small>
+<app-pop-up *ngIf="isRegistered" (closed)="resetForm()"></app-pop-up>
+<app-error-pop-up *ngIf="error" (closed)="resetForm()"></app-error-pop-up>

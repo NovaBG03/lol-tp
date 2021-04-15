@@ -211,3 +211,7 @@ button.main-button:disabled {
   color: #888;
   text-align: center;
 }
+
+.no-scroll {
+  overflow: hidden;
+}
